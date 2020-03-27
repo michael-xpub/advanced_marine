@@ -62,7 +62,7 @@ x = [omega1,omega2];
 y = [minimum1,minimum2];
 z = ["r","g"];
 for i=1:1:2
-    plot(x(i),y(i),'o','MarkerFaceColor',z(i),'MarkerEdgeColor','k','MarkerSize',5,'DisplayName',['\omega',num2str(i),'=',num2str(x(i))])
+    plot(x(i),y(i),'o','MarkerFaceColor',z(i),'MarkerEdgeColor','k','MarkerSize',10,'DisplayName',['\omega',num2str(i),'=',num2str(x(i))])
 end
 legend('Location','northwest','Orientation','vertical')
 %% Modal Shapes Plot %%
@@ -106,7 +106,7 @@ plot(N20,Nn1,'r*','DisplayName','Border #1')
 plot(N20,Nn2,'r*','DisplayName','Border #2')
 plot(N103,Nn1,'r*','DisplayName','Border #3')
 plot(N103,Nn2,'r*','DisplayName','Border #4')
-%Plot harmonics
+%% Plot harmonics %%
 a=1.1*N103;
 j=1;
 for i=1:1:50

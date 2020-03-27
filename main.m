@@ -62,7 +62,7 @@ x = [omega1,omega2];
 y = [minimum1,minimum2];
 z = ["r","g"];
 for i=1:1:2
-    plot(x(i),y(i),'o','MarkerFaceColor',z(i),'MarkerEdgeColor','k','MarkerSize',5,'DisplayName',['\omega',num2str(i),'=',num2str(x(i))])
+    plot(x(i),y(i),'o','MarkerFaceColor',z(i),'MarkerEdgeColor','k','MarkerSize',10,'DisplayName',['\omega',num2str(i),'=',num2str(x(i))])
 end
 legend('Location','northwest','Orientation','vertical')
 %% Modal Shapes Plot %%
@@ -72,8 +72,8 @@ plot(theta_omega2(1,:),'r','linewidth',2,'DisplayName',['\omega2=' num2str(omega
 z = ["g","y","k"];
 x = ["M.E.","S.G.","P"];
 for i=1:1:3
-    plot(i,theta_omega1(1,i),'o','MarkerFaceColor',z(i),'MarkerEdgeColor','k','MarkerSize',5,'DisplayName',x(i))
-    plot(i,theta_omega2(1,i),'o','MarkerFaceColor',z(i),'MarkerEdgeColor','k','MarkerSize',5,'DisplayName',x(i))
+    plot(i,theta_omega1(1,i),'o','MarkerFaceColor',z(i),'MarkerEdgeColor','k','MarkerSize',10,'DisplayName',x(i))
+    plot(i,theta_omega2(1,i),'o','MarkerFaceColor',z(i),'MarkerEdgeColor','k','MarkerSize',10,'DisplayName',x(i))
 end
 legend('Location','southeast','Orientation','Vertical')
 set(gca,'fontsize',16)
