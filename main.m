@@ -4,7 +4,7 @@ close all
 %% Input Data %%
 omega = 1:1E-2:175;
 omega = omega';
-Theta = ones(size(omega)); 
+Theta = ones(size(omega));
 Mt = ones(size(omega));
 Jeq = [156146 33834 99530];
 Keq = [575043128.23 123869689.09 0];
@@ -129,3 +129,43 @@ lgd.FontSize = 7;
 lgd.NumColumns = 3;
 
 clearvars a f i j ans lgd minimum1 minimum2 N103 N20 Nmcr omega Mt pos1 pos2 pos_theta temp Theta
+
+%% Task 4
+% Input Data
+J = [39526;23324;23324;23324;23324;23324;11412;22422;827;98703];
+Kt = [3.02E+09;3.45E+09;3.6E+09;3.62E+09;3.58E+09;3.51E+09;5.38E+09;1.65E+08;5.49E+08];
+D = [0.96;0.96;0.96;0.96;0.96;0.96;0.9045;0.7;0.88];
+d = [0.48;0.48;0.48;0.48;0.48;0.48;0;0;0];
+n = 1:1:10;
+n = n';
+% Memory preallocation
+Theta = ones(size(n));
+Mt = ones(size(n));
+Wp = ones(size(Kt));
+Deltatk = ones(size(Kt));
+% Calculations
+Mt(1,1) = Theta(1,1)*J(1)*omega1^2;
+Theta (1,1) = 1;
+for i=2:size(n)
+    Theta (i,1) = Theta(i-1,1)-(Mt(i-1,1)/Kt(i-1));
+    Mt(i,1) = Mt(i-1,1)+(Theta(i)*J(i)*omega1^2);
+end
+for i=1:size(Kt)
+    Wp(i,1) = (pi/16)*((D(i)^4-d(i)^4)/D(i));
+    Deltatk (i,1) = (Kt(i)/Wp(i))*(Theta(i)-Theta(i+1));
+end
+figure,hold on,grid on
+title('Modal Shape - Component vs \Theta')
+ylim([min(Theta)*1.1 max(Theta)*1.1])
+xlim([0 length(Theta)*1.1])
+plot(1:1:size(Theta),Theta(:,1),'b','Linewidth',2,'DisplayName','Mt3')
+xlabel('Component [number]','Interpreter','latex')
+ylabel('\Theta [rad]')
+for i=1:1:size(Theta)
+    scatter(i,Theta(i),'MarkerEdgeColor','black','MarkerFaceColor','black','DisplayName',['Point ',num2str(i),'= (',num2str(i),',',num2str(Theta(i)),')'])
+end
+yline(0,'--b','LineWidth',1,'DisplayName','Reference (0)')
+legend('Location','southwest','Orientation','vertical')
+lgd=legend;
+lgd.FontSize = 10;
+set(gca,'fontsize',16)
