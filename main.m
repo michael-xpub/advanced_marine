@@ -57,7 +57,7 @@ figure,hold on,grid on
 title("Torque vs Frequency")
 plot(omega,Mt(:,3),'b','Linewidth',2,'DisplayName','Mt3')
 xlabel('\omega [rad/s]')
-ylabel('Mt3 [kN/m]','Interpreter','latex')
+ylabel('Mt3 [N*m]','Interpreter','latex')
 set(gca,'fontsize',16)
 x = [omega1,omega2];
 y = [minimum1,minimum2];
@@ -69,6 +69,7 @@ legend('Location','northwest','Orientation','vertical')
 % Modal Shapes Plot
 figure,hold on,grid on
 title("Modal shapes")
+xlabel('Disk [number]')
 ylabel("\Theta [rad]")
 plot(theta_omega1(1,:),'b','linewidth',2,'DisplayName',['\omega1=' num2str(omega1)])
 plot(theta_omega2(1,:),'r','linewidth',2,'DisplayName',['\omega2=' num2str(omega2)])
@@ -157,7 +158,7 @@ figure,hold on,grid on
 title('Modal Shape - Component vs \Theta')
 ylim([min(Theta)*1.1 max(Theta)*1.1])
 xlim([0 length(Theta)*1.1])
-plot(1:1:size(Theta),Theta(:,1),'b','Linewidth',2,'DisplayName','Mt3')
+plot(1:1:size(Theta),Theta(:,1),'b','Linewidth',2,'DisplayName',['For /omega=',omega1])
 xlabel('Component [number]','Interpreter','latex')
 ylabel('\Theta [rad]')
 for i=1:1:size(Theta)
